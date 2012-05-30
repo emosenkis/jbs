@@ -3,7 +3,7 @@
 # Animal game - plays a yes/no guessing game to figure out what animal
 # the user is thinking of. It uses a simple binary tree to store it's
 # knowledge, which is given by the user when it loses.
-# Usage: ./animal.rb
+# Usage: ruby L02-animal.rb
 
 # Define the question class - it has a question and two answers
 class Question

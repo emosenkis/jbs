@@ -1,7 +1,7 @@
 #!/bin/env ruby
 # Eitan Mosenkis - JBS pre-homework
 # Usage:
-# ./secret.rb < input
+# ruby L01-secret.rb
 # This script takes a list of people on STDIN with the format:
 # <first> <last> <<email@addr.ess>>
 # It then pairs people so that each person is assigned someone
