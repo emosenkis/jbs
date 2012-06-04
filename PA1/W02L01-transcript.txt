@@ -1,0 +1,45 @@
+Read 100000 ratings of 1682 movies by 943 users in 0.453 seconds
+10 most similar users to user 459 are
+178
+393
+276
+450
+92
+416
+378
+435
+332
+804
+and the 10 least similar are
+219
+147
+172
+522
+628
+129
+713
+98
+845
+900
+10 most popular movies are
+Star Wars (1977)
+Fargo (1996)
+Return of the Jedi (1983)
+Godfather, The (1972)
+Raiders of the Lost Ark (1981)
+Silence of the Lambs, The (1991)
+Contact (1997)
+Empire Strikes Back, The (1980)
+Toy Story (1995)
+Pulp Fiction (1994)
+and the 10 least popular are
+Cable Guy, The (1996)
+Striptease (1996)
+Bio-Dome (1996)
+Island of Dr. Moreau, The (1996)
+Free Willy 3: The Rescue (1997)
+Crow: City of Angels, The (1996)
+McHale's Navy (1997)
+Children of the Corn: The Gathering (1996)
+Mortal Kombat: Annihilation (1997)
+Leave It to Beaver (1997)
