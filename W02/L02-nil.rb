@@ -1,4 +1,7 @@
 #!/bin/env ruby
+# Eitan Mosenkis - W02L02
+# Nil profiling script
+# Usage: ruby L02-nil.rb
 
 junk=[Time.now, true, false, nil]
 reps=10000000
