@@ -3,17 +3,19 @@
 # Nil profiling script
 # Usage: ruby L02-nil.rb
 
-junk=[Time.now, true, false, nil]
-reps=10000000
+def time(desc, reps)
+	start=Time.now
+	reps.times do |n|
+		yield
+	end
+	puts "Took #{Time.now-start} sec. to #{desc} #{reps} times"
+end
 
-start=Time.now
-reps.times do |n|
+junk=[Time.now, true, false, nil]
+
+time "x.nil?", 10000000 do
 	junk.each {|x| x.nil?}
 end
-puts "Took #{Time.now-start} sec. for x.nil? to repeat #{reps} times"
-
-start=Time.now
-reps.times do |n|
+time "x == nil", 10000000 do
 	junk.each {|x| x == nil}
 end
-puts "Took #{Time.now-start} sec. for x == nil to repeat #{reps} times"
