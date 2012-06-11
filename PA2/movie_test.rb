@@ -1,11 +1,18 @@
-# Comment
+# Eitan Mosenkis - W03L01 - PA2
+# Movie prediction testing
+
+# Additional MovieData method for prediction testing
 class MovieData
 	# Compute predicted ratings for the first k ratings in the test set and return
 	# them in a MovieTest object
 	def run_test(k)
-		MovieTest.new @test.ratings.first(k).collect{|rating| TestRating.new(
+		start=Time.now
+		results=MovieTest.new @test.ratings.first(k).collect{|rating| TestRating.new(
 			rating.user, rating.movie, rating.rating,
 			self.predict(rating.user, rating.movie))}
+		time=Time.now-start
+		puts "Calculated #{k} predictions in #{time.round(3)} seconds = #{(time/k).round(3)}s/prediction"
+		return results
 	end
 end
 

@@ -1,7 +1,8 @@
 #!/bin/env ruby
 # Eitan Mosenkis - W03L01 - PA2
+# Usage: load as a library or run ./movie_data.rb for a demo
 
-require 'movie_test.rb'
+load 'movie_test.rb'
 
 # One user rating (read-only, auto-type-casting)
 class Rating
@@ -16,16 +17,17 @@ class Rating
 end
 # One movie (read-only, auto-type-casting)
 class Movie
-	attr_reader :id, :title, :date, :imdb_url, :unknown, :action, :adventure, \
+	attr_reader :id, :title, :date, :video_date, :imdb_url, :unknown, :action, :adventure, \
 		:animation, :childrens, :comedy, :crime, :documentary, :drama, :fantasy, \
 		:film_noir, :horror, :musical, :mystery, :romance, :sci_fi, :thriller, :war, :western
 	# Create a new Movie object with all its data
-	def initialize(id, title, date, imdb_url, unknown, action, adventure,\
+	def initialize(id, title, date, video_date, imdb_url, unknown, action, adventure,\
 		animation, childrens, comedy, crime, documentary, drama, fantasy, film_noir, \
 		horror, musical, mystery, romance, sci_fi, thriller, war, western)
 		@id=Integer(id)
 		@title=title
 		@date=date
+		@video_date=video_date
 		@imdb_url=imdb_url
 		@unknown=Integer(unknown)==1
 		@action=Integer(action)==1
@@ -67,12 +69,12 @@ class MovieData
 		@movie_info=[]
 		File.open(@dir+'/'+"u.item", encoding: 'iso-8859-1') do |f|
 			f.each do |line|
-				id, title, date, imdb_url, unknown, action, adventure, \
+				id, title, date, video_date, imdb_url, unknown, action, adventure, \
 					animation, childrens, comedy, crime, documentary, \
 					drama, fantasy, film_noir, horror, musical, mystery, \
 					romance, sci_fi, thriller, war, western=line.chomp.split('|')
 				# Create a Movie object and index it by id
-				@movie_info[Integer(id)]=Movie.new(id, title, date, imdb_url, \
+				@movie_info[Integer(id)]=Movie.new(id, title, date, video_date, imdb_url, \
 					unknown, action, adventure, animation, childrens, comedy, \
 					crime, documentary, drama, fantasy, film_noir, horror, \
 					musical, mystery, romance, sci_fi, thriller, war, western)
@@ -102,6 +104,7 @@ class MovieData
 end
 # Loads one MovieLens data file and provides data based on it
 class MovieDataSet
+	attr_reader :ratings
 	# Load data from the given file
 	def initialize(file)
 		@movies={}
@@ -203,6 +206,6 @@ end
 if __FILE__ == $0 then
 	md=MovieData.new('ml-100k', :u1)
 	md.load_movie_data
-	mt=md.run_test(20000)
+	mt=md.run_test(10)
 	puts "Mean: #{mt.mean}; stddev: #{mt.stddev}; rms: #{mt.rms}"
 end
