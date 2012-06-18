@@ -93,6 +93,8 @@
   
     <li class="file"><a href="./ml-100k/README.html">README</a>
   
+    <li class="file"><a href="./transcript_txt.html">transcript</a>
+  
   </ul>
 </nav>
 
@@ -112,6 +114,8 @@
     <li><a href="./Rating.html">Rating</a>
   
     <li><a href="./TestRating.html">TestRating</a>
+  
+    <li><a href="./User.html">User</a>
   
   </ul>
 </nav>
@@ -162,7 +166,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File movie_test.rb, line 14</span>
+            <pre><span class="ruby-comment"># File movie_test.rb, line 21</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">ratings</span>)
         <span class="ruby-ivar">@ratings</span>=<span class="ruby-identifier">ratings</span>
 <span class="ruby-keyword">end</span></pre>
@@ -198,7 +202,7 @@
 
           
           <div class="method-source-code" id="mean-source">
-            <pre><span class="ruby-comment"># File movie_test.rb, line 18</span>
+            <pre><span class="ruby-comment"># File movie_test.rb, line 25</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">mean</span>
         <span class="ruby-ivar">@ratings</span>.<span class="ruby-identifier">collect</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">rating</span><span class="ruby-operator">|</span> <span class="ruby-identifier">rating</span>.<span class="ruby-identifier">predicted</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">rating</span>.<span class="ruby-identifier">real</span>}.<span class="ruby-identifier">inject</span>(<span class="ruby-value">0</span>, <span class="ruby-value">:+</span>)<span class="ruby-operator">/</span><span class="ruby-ivar">@ratings</span>.<span class="ruby-identifier">count</span>
 <span class="ruby-keyword">end</span></pre>
@@ -228,7 +232,7 @@
 
           
           <div class="method-source-code" id="rms-source">
-            <pre><span class="ruby-comment"># File movie_test.rb, line 27</span>
+            <pre><span class="ruby-comment"># File movie_test.rb, line 34</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">rms</span>
         <span class="ruby-constant">Math</span>.<span class="ruby-identifier">sqrt</span>(<span class="ruby-ivar">@ratings</span>.<span class="ruby-identifier">collect</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">rating</span><span class="ruby-operator">|</span> (<span class="ruby-identifier">rating</span>.<span class="ruby-identifier">predicted</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">rating</span>.<span class="ruby-identifier">real</span>)<span class="ruby-operator">**</span><span class="ruby-value">2</span>}.<span class="ruby-identifier">inject</span>(<span class="ruby-value">0</span>, <span class="ruby-value">:+</span>)<span class="ruby-operator">/</span><span class="ruby-ivar">@ratings</span>.<span class="ruby-identifier">count</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -258,7 +262,7 @@
 
           
           <div class="method-source-code" id="stddev-source">
-            <pre><span class="ruby-comment"># File movie_test.rb, line 22</span>
+            <pre><span class="ruby-comment"># File movie_test.rb, line 29</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">stddev</span>
         <span class="ruby-identifier">mean</span>=<span class="ruby-keyword">self</span>.<span class="ruby-identifier">mean</span>
         <span class="ruby-constant">Math</span>.<span class="ruby-identifier">sqrt</span>(<span class="ruby-ivar">@ratings</span>.<span class="ruby-identifier">collect</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">rating</span><span class="ruby-operator">|</span> (<span class="ruby-identifier">rating</span>.<span class="ruby-identifier">predicted</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">rating</span>.<span class="ruby-identifier">real</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">mean</span>)<span class="ruby-operator">**</span><span class="ruby-value">2</span>}.<span class="ruby-identifier">inject</span>(<span class="ruby-value">0</span>, <span class="ruby-value">:+</span>)<span class="ruby-operator">/</span><span class="ruby-ivar">@ratings</span>.<span class="ruby-identifier">count</span>)
@@ -289,7 +293,7 @@
 
           
           <div class="method-source-code" id="to_a-source">
-            <pre><span class="ruby-comment"># File movie_test.rb, line 31</span>
+            <pre><span class="ruby-comment"># File movie_test.rb, line 38</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">to_a</span>
         <span class="ruby-ivar">@ratings</span>.<span class="ruby-identifier">collect</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">rating</span><span class="ruby-operator">|</span> [<span class="ruby-identifier">rating</span>.<span class="ruby-identifier">user</span>, <span class="ruby-identifier">rating</span>.<span class="ruby-identifier">movie</span>, <span class="ruby-identifier">rating</span>.<span class="ruby-identifier">real</span>, <span class="ruby-identifier">rating</span>.<span class="ruby-identifier">predicted</span>]}
 <span class="ruby-keyword">end</span></pre>

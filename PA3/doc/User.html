@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>class Rating - RDoc Documentation</title>
+<title>class User - RDoc Documentation</title>
 
 <link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
 
@@ -116,11 +116,11 @@
 </nav>
 
 <div id="documentation">
-  <h1 class="class">class Rating</h1>
+  <h1 class="class">class User</h1>
 
   <div id="description" class="description">
     
-<p>One user rating (read-only, auto-type-casting)</p>
+<p>One user (read-only, auto-type-casting)</p>
 
   </div><!-- description -->
 
@@ -140,9 +140,9 @@
       <h3 class="section-header">Attributes</h3>
 
       
-      <div id="attribute-i-movie" class="method-detail">
+      <div id="attribute-i-age" class="method-detail">
         <div class="method-heading attribute-method-heading">
-          <span class="method-name">movie</span><span
+          <span class="method-name">age</span><span
             class="attribute-access-type">[R]</span>
         </div>
 
@@ -153,9 +153,9 @@
         </div>
       </div>
       
-      <div id="attribute-i-rating" class="method-detail">
+      <div id="attribute-i-gender" class="method-detail">
         <div class="method-heading attribute-method-heading">
-          <span class="method-name">rating</span><span
+          <span class="method-name">gender</span><span
             class="attribute-access-type">[R]</span>
         </div>
 
@@ -166,9 +166,9 @@
         </div>
       </div>
       
-      <div id="attribute-i-timestamp" class="method-detail">
+      <div id="attribute-i-id" class="method-detail">
         <div class="method-heading attribute-method-heading">
-          <span class="method-name">timestamp</span><span
+          <span class="method-name">id</span><span
             class="attribute-access-type">[R]</span>
         </div>
 
@@ -179,9 +179,22 @@
         </div>
       </div>
       
-      <div id="attribute-i-user" class="method-detail">
+      <div id="attribute-i-occupation" class="method-detail">
         <div class="method-heading attribute-method-heading">
-          <span class="method-name">user</span><span
+          <span class="method-name">occupation</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-zip_code" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">zip_code</span><span
             class="attribute-access-type">[R]</span>
         </div>
 
@@ -205,24 +218,25 @@
         
         <div class="method-heading">
           <span class="method-name">new</span><span
-            class="method-args">(user,movie,rating,timestamp)</span>
+            class="method-args">(id, age, gender, occupation, zip_code)</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
         
 
         <div class="method-description">
           
-          <p>Create a new <a href="Rating.html">Rating</a> object with all its data</p>
+          
           
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File movie_data.rb, line 11</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">user</span>,<span class="ruby-identifier">movie</span>,<span class="ruby-identifier">rating</span>,<span class="ruby-identifier">timestamp</span>)
-        <span class="ruby-ivar">@user</span>=<span class="ruby-constant">Integer</span>(<span class="ruby-identifier">user</span>)
-        <span class="ruby-ivar">@movie</span>=<span class="ruby-constant">Integer</span>(<span class="ruby-identifier">movie</span>)
-        <span class="ruby-ivar">@rating</span>=<span class="ruby-constant">Integer</span>(<span class="ruby-identifier">rating</span>)
-        <span class="ruby-ivar">@timestamp</span>=<span class="ruby-identifier">timestamp</span>.<span class="ruby-identifier">chomp</span>
+            <pre><span class="ruby-comment"># File movie_data.rb, line 66</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">id</span>, <span class="ruby-identifier">age</span>, <span class="ruby-identifier">gender</span>, <span class="ruby-identifier">occupation</span>, <span class="ruby-identifier">zip_code</span>)
+        <span class="ruby-ivar">@id</span>=<span class="ruby-constant">Integer</span>(<span class="ruby-identifier">id</span>)
+        <span class="ruby-ivar">@age</span>=<span class="ruby-constant">Integer</span>(<span class="ruby-identifier">age</span>)
+        <span class="ruby-ivar">@gender</span>=<span class="ruby-identifier">gender</span>.<span class="ruby-identifier">to_sym</span>
+        <span class="ruby-ivar">@occupation</span>=<span class="ruby-identifier">occupation</span>.<span class="ruby-identifier">to_sym</span>
+        <span class="ruby-ivar">@zip_code</span>=<span class="ruby-identifier">zip_code</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- new-source -->
           

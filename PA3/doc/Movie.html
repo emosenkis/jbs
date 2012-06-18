@@ -72,6 +72,10 @@
     
     <li><a href="#method-c-new">::new</a>
     
+    <li><a href="#method-i-genres">#genres</a>
+    
+    <li><a href="#method-i-has_genre-3F">#has_genre?</a>
+    
   </ul>
 </nav>
 
@@ -84,6 +88,8 @@
   <ul>
   
     <li class="file"><a href="./ml-100k/README.html">README</a>
+  
+    <li class="file"><a href="./transcript_txt.html">transcript</a>
   
   </ul>
 </nav>
@@ -104,6 +110,8 @@
     <li><a href="./Rating.html">Rating</a>
   
     <li><a href="./TestRating.html">TestRating</a>
+  
+    <li><a href="./User.html">User</a>
   
   </ul>
 </nav>
@@ -409,6 +417,19 @@
         </div>
       </div>
       
+      <div id="attribute-i-video_date" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">video_date</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
       <div id="attribute-i-war" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">war</span><span
@@ -448,7 +469,7 @@
         
         <div class="method-heading">
           <span class="method-name">new</span><span
-            class="method-args">(id, title, date, imdb_url, unknown, action, adventure,\ animation, childrens, comedy, crime, documentary, drama, fantasy, film_noir, \ horror, musical, mystery, romance, sci_fi, thriller, war, western)</span>
+            class="method-args">(id, title, date, video_date, imdb_url, unknown, action, adventure,\ animation, childrens, comedy, crime, documentary, drama, fantasy, film_noir, \ horror, musical, mystery, romance, sci_fi, thriller, war, western)</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
         
@@ -460,11 +481,12 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File movie_data.rb, line 23</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">id</span>, <span class="ruby-identifier">title</span>, <span class="ruby-identifier">date</span>, <span class="ruby-identifier">imdb_url</span>, <span class="ruby-identifier">unknown</span>, <span class="ruby-identifier">action</span>, <span class="ruby-identifier">adventure</span>,                 <span class="ruby-identifier">animation</span>, <span class="ruby-identifier">childrens</span>, <span class="ruby-identifier">comedy</span>, <span class="ruby-identifier">crime</span>, <span class="ruby-identifier">documentary</span>, <span class="ruby-identifier">drama</span>, <span class="ruby-identifier">fantasy</span>, <span class="ruby-identifier">film_noir</span>,                  <span class="ruby-identifier">horror</span>, <span class="ruby-identifier">musical</span>, <span class="ruby-identifier">mystery</span>, <span class="ruby-identifier">romance</span>, <span class="ruby-identifier">sci_fi</span>, <span class="ruby-identifier">thriller</span>, <span class="ruby-identifier">war</span>, <span class="ruby-identifier">western</span>)
+            <pre><span class="ruby-comment"># File movie_data.rb, line 25</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">id</span>, <span class="ruby-identifier">title</span>, <span class="ruby-identifier">date</span>, <span class="ruby-identifier">video_date</span>, <span class="ruby-identifier">imdb_url</span>, <span class="ruby-identifier">unknown</span>, <span class="ruby-identifier">action</span>, <span class="ruby-identifier">adventure</span>,                 <span class="ruby-identifier">animation</span>, <span class="ruby-identifier">childrens</span>, <span class="ruby-identifier">comedy</span>, <span class="ruby-identifier">crime</span>, <span class="ruby-identifier">documentary</span>, <span class="ruby-identifier">drama</span>, <span class="ruby-identifier">fantasy</span>, <span class="ruby-identifier">film_noir</span>,                  <span class="ruby-identifier">horror</span>, <span class="ruby-identifier">musical</span>, <span class="ruby-identifier">mystery</span>, <span class="ruby-identifier">romance</span>, <span class="ruby-identifier">sci_fi</span>, <span class="ruby-identifier">thriller</span>, <span class="ruby-identifier">war</span>, <span class="ruby-identifier">western</span>)
         <span class="ruby-ivar">@id</span>=<span class="ruby-constant">Integer</span>(<span class="ruby-identifier">id</span>)
         <span class="ruby-ivar">@title</span>=<span class="ruby-identifier">title</span>
         <span class="ruby-ivar">@date</span>=<span class="ruby-identifier">date</span>
+        <span class="ruby-ivar">@video_date</span>=<span class="ruby-identifier">video_date</span>
         <span class="ruby-ivar">@imdb_url</span>=<span class="ruby-identifier">imdb_url</span>
         <span class="ruby-ivar">@unknown</span>=<span class="ruby-constant">Integer</span>(<span class="ruby-identifier">unknown</span>)<span class="ruby-operator">==</span><span class="ruby-value">1</span>
         <span class="ruby-ivar">@action</span>=<span class="ruby-constant">Integer</span>(<span class="ruby-identifier">action</span>)<span class="ruby-operator">==</span><span class="ruby-value">1</span>
@@ -497,6 +519,74 @@
 
     
     </section><!-- public-class-method-details -->
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-genres" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">genres</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="genres-source">
+            <pre><span class="ruby-comment"># File movie_data.rb, line 53</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">genres</span>
+        [<span class="ruby-ivar">@unknown</span>, <span class="ruby-ivar">@action</span>, <span class="ruby-ivar">@adventure</span>, <span class="ruby-ivar">@animation</span>, <span class="ruby-ivar">@childrens</span>, <span class="ruby-ivar">@comedy</span>, <span class="ruby-ivar">@crime</span>,
+                <span class="ruby-ivar">@documentary</span>, <span class="ruby-ivar">@drama</span>, <span class="ruby-ivar">@fantasy</span>, <span class="ruby-ivar">@film_noir</span>, <span class="ruby-ivar">@horror</span>, <span class="ruby-ivar">@musical</span>,
+                <span class="ruby-ivar">@mystery</span>, <span class="ruby-ivar">@romance</span>, <span class="ruby-ivar">@sci_fi</span>, <span class="ruby-ivar">@thriller</span>, <span class="ruby-ivar">@war</span>, <span class="ruby-ivar">@western</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- genres-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- genres-method -->
+
+    
+      <div id="method-i-has_genre-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">has_genre?</span><span
+            class="method-args">(genre_id)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="has_genre-3F-source">
+            <pre><span class="ruby-comment"># File movie_data.rb, line 58</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">has_genre?</span>(<span class="ruby-identifier">genre_id</span>)
+        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">genres</span>[<span class="ruby-identifier">genre_id</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- has_genre-3F-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- has_genre-3F-method -->
+
+    
+    </section><!-- public-instance-method-details -->
   
   </section><!-- 5Buntitled-5D -->
 

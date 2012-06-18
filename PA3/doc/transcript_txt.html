@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<title>transcript - RDoc Documentation</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body class="file">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./ml-100k/README.html">README</a>
+  
+    <li class="file"><a href="./transcript_txt.html">transcript</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./Movie.html">Movie</a>
+  
+    <li><a href="./MovieData.html">MovieData</a>
+  
+    <li><a href="./MovieDataSet.html">MovieDataSet</a>
+  
+    <li><a href="./MovieTest.html">MovieTest</a>
+  
+    <li><a href="./Rating.html">Rating</a>
+  
+    <li><a href="./TestRating.html">TestRating</a>
+  
+    <li><a href="./User.html">User</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation" class="description">
+  
+<p>&gt;&gt; load ‘movie_data.rb’ #=&gt; true &gt;&gt; md=<a
+href="MovieData.html#method-c-new">MovieData.new</a>(‘ml-100k’); nil #=&gt;
+nil Processed 100000 ratings of 1682 movies by 943 users in 0.409 seconds
+&gt;&gt; md.test1(:sci_fi, 1996).collect {|movie| md.info(movie).title}</p>
+
+<h1 id="label-%3E+%5B%22Mystery+Science+Theater+3000%3A+The+Movie+%281996%29%22%2C+%22Independence+Day+%28ID4%29+%281996%29%22%2C+%22Star+Trek%3A+First+Contact+%281996%29%22%2C+%22Mars+Attacks%21+%281996%29%22%2C+%22Nutty+Professor%2C+The+%281996%29%22%2C+%22Hellraiser%3A+Bloodline+%281996%29%22%2C+%22Lawnmower+Man+2%3A+Beyond+Cyberspace+%281996%29%22%2C+%22Arrival%2C+The+%281996%29%22%2C+%22Escape+from+L.A.+%281996%29%22%2C+%22Unforgettable+%281996%29%22%2C+%22Island+of+Dr.+Moreau%2C+The+%281996%29%22%2C+%22Solo+%281996%29%22%2C+%22Barb+Wire+%281996%29%22%2C+%22Ghost+in+the+Shell+%28Kokaku+kidotai%29+%281995%29%22%2C+%22Visitors%2C+The+%28Visiteurs%2C+Les%29+%281993%29%22%5D">&gt; [“Mystery Science Theater 3000: The <a href="Movie.html">Movie</a> (1996)”, “Independence Day (ID4) (1996)”, “Star Trek: First Contact (1996)”, “Mars Attacks! (1996)”, “Nutty Professor, The (1996)”, “Hellraiser: Bloodline (1996)”, “Lawnmower Man 2: Beyond Cyberspace (1996)”, “Arrival, The (1996)”, “Escape from L.A. (1996)”, “Unforgettable (1996)”, “Island of Dr. Moreau, The (1996)”, “Solo (1996)”, “Barb Wire (1996)”, “Ghost in the Shell (Kokaku kidotai) (1995)”, “Visitors, The (Visiteurs, Les) (1993)”]</h1>
+
+<p>&gt;&gt; <a href="http://18,22">md.test2(</a>, :M, 5).collect {|movie|
+md.info(movie).title} Processed 11814 ratings of 1219 movies by 94 users in
+0.01 seconds</p>
+
+<h1 id="label-%3E+%5B%22Star+Wars+%281977%29%22%2C+%22Return+of+the+Jedi+%281983%29%22%2C+%22Empire+Strikes+Back%2C+The+%281980%29%22%2C+%22Pulp+Fiction+%281994%29%22%2C+%22Scream+%281996%29%22%5D">&gt; [“Star Wars (1977)”, “Return of the Jedi (1983)”, “Empire Strikes Back, The (1980)”, “Pulp Fiction (1994)”, “Scream (1996)”]</h1>
+
+<p>&gt;&gt; <a href="http://18,22">md.test2(</a>, :F, 5).collect {|movie|
+md.info(movie).title} Processed 5007 ratings of 1273 movies by 43 users in
+0.005 seconds</p>
+
+<h1 id="label-%3E+%5B%22Return+of+the+Jedi+%281983%29%22%2C+%22Star+Wars+%281977%29%22%2C+%22Titanic+%281997%29%22%2C+%22Princess+Bride%2C+The+%281987%29%22%2C+%22Schindler%27s+List+%281993%29%22%5D">&gt; [“Return of the Jedi (1983)”, “Star Wars (1977)”, “Titanic (1997)”, “Princess Bride, The (1987)”, “Schindler’s List (1993)”]</h1>
+
+</div>
+
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+
