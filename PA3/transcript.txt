@@ -1,0 +1,11 @@
+>> load 'movie_data.rb' #=> true
+>> md=MovieData.new('ml-100k'); nil #=> nil
+Processed 100000 ratings of 1682 movies by 943 users in 0.409 seconds
+>> md.test1(:sci_fi, 1996).collect {|movie| md.info(movie).title}
+=> ["Mystery Science Theater 3000: The Movie (1996)", "Independence Day (ID4) (1996)", "Star Trek: First Contact (1996)", "Mars Attacks! (1996)", "Nutty Professor, The (1996)", "Hellraiser: Bloodline (1996)", "Lawnmower Man 2: Beyond Cyberspace (1996)", "Arrival, The (1996)", "Escape from L.A. (1996)", "Unforgettable (1996)", "Island of Dr. Moreau, The (1996)", "Solo (1996)", "Barb Wire (1996)", "Ghost in the Shell (Kokaku kidotai) (1995)", "Visitors, The (Visiteurs, Les) (1993)"]
+>> md.test2([18,22], :M, 5).collect {|movie| md.info(movie).title}
+Processed 11814 ratings of 1219 movies by 94 users in 0.01 seconds
+=> ["Star Wars (1977)", "Return of the Jedi (1983)", "Empire Strikes Back, The (1980)", "Pulp Fiction (1994)", "Scream (1996)"]
+>> md.test2([18,22], :F, 5).collect {|movie| md.info(movie).title}
+Processed 5007 ratings of 1273 movies by 43 users in 0.005 seconds
+=> ["Return of the Jedi (1983)", "Star Wars (1977)", "Titanic (1997)", "Princess Bride, The (1987)", "Schindler's List (1993)"]
