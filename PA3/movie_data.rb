@@ -15,6 +15,7 @@ class Rating
 		@timestamp=timestamp.chomp
 	end
 end
+
 # One movie (read-only, auto-type-casting)
 class Movie
 	attr_reader :id, :title, :date, :video_date, :imdb_url, :unknown, :action, :adventure, \
@@ -49,7 +50,28 @@ class Movie
 		@war=Integer(war)==1
 		@western=Integer(western)==1
 	end
+	def genres
+		[@unknown, @action, @adventure, @animation, @childrens, @comedy, @crime,
+			@documentary, @drama, @fantasy, @film_noir, @horror, @musical,
+			@mystery, @romance, @sci_fi, @thriller, @war, @western]
+	end
+	def has_genre?(genre_id)
+		self.genres[genre_id]
+	end
 end
+
+# One user (read-only, auto-type-casting)
+class User
+	attr_reader :id, :age, :gender, :occupation, :zip_code
+	def initialize(id, age, gender, occupation, zip_code)
+		@id=Integer(id)
+		@age=Integer(age)
+		@gender=gender.to_sym
+		@occupation=occupation.to_sym
+		@zip_code=zip_code
+	end
+end
+
 # Represents a base set of movie data and a test set
 class MovieData
 	# Read data from the given directory. If subset is given, read <subset>.base and <subset>.test.
@@ -63,6 +85,8 @@ class MovieData
 			@base=MovieDataSet.new(dir+'/'+subset.to_s+'.base')
 			@test=MovieDataSet.new(dir+'/'+subset.to_s+'.test')
 		end
+		load_movie_data
+		load_user_data
 	end
 	# Load movie details from the u.item file in the directory provided to MovieData.new
 	def load_movie_data
@@ -78,6 +102,16 @@ class MovieData
 					unknown, action, adventure, animation, childrens, comedy, \
 					crime, documentary, drama, fantasy, film_noir, horror, \
 					musical, mystery, romance, sci_fi, thriller, war, western)
+			end
+		end
+	end
+	# Load user details from the u.user file in the directory provided to MovieData.new
+	def load_user_data
+		@user_info=[]
+		File.open(@dir+'/'+"u.user", encoding: 'iso-8859-1') do |f|
+			f.each do |line|
+				id, age, gender, occupation, zip_code = line.chomp.split('|')
+				@user_info[Integer(id)]=User.new(id, age, gender, occupation, zip_code)
 			end
 		end
 	end
@@ -101,37 +135,83 @@ class MovieData
 	def viewers(movie)
 		@base.viewers(movie)
 	end
+	# Finds movies filtered by title, date, and/or genre
+	def find_movies(query)
+		movies=@movie_info.compact
+		if query[:title]
+			movies.select! {|movie| movie.title.downcase.include? query[:title].downcase}
+		end
+		if query[:genre]
+			if query[:genre].class == Fixnum then
+				movies.select! {|movie| movie.has_genre? query[:genre]}
+			else
+				movies.select! {|movie| movie.method(query[:genre]).call}
+			end
+		end
+		if query[:date]
+			movies.select! {|movie| movie.date.include? query[:date].to_s}
+		end
+		movies.collect {|movie| movie.id}
+	end
+	# Finds users filtered by occupation, age, and/or sex
+	def find_users(query)
+		users=@user_info.compact
+		if query[:occupation]
+			users.select! {|user| user.occupation == query[:occupation].to_sym}
+		end
+		if query[:age]
+			users.select! {|user| user.age >= query[:age][0] && user.age <= query[:age][1]}
+		end
+		if query[:sex]
+			users.select! {|user| user.gender == query[:sex].to_sym}
+		end
+		users.collect {|user| user.id}
+	end
+	# Gets all movies from the given genre and year
+	def test1(genre, year)
+		find_movies genre: genre, date: year
+	end
+	# Gets the n most popular movies for viewers from the given age range and sex
+	def test2(agerange, sex, n)
+		users=find_users age: agerange, sex: sex
+		data_set=MovieDataSet.new(@base.ratings.select {|rating| users.include? rating.user})
+		data_set.popularity_list.first(n)
+	end
 end
 # Loads one MovieLens data file and provides data based on it
 class MovieDataSet
 	attr_reader :ratings
 	# Load data from the given file
-	def initialize(file)
+	def initialize(data)
 		@movies={}
 		@users={}
 		@ratings=[]
 		start=Time.now
-		count=0
-		File.open(file, encoding: 'iso-8859-1') do |f|
-			f.each do |line|
-				count+=1
-				user, movie, rating, timestamp = line.chomp.split("\t")
-				# Create a Rating object and index it by movie and user
-				rating=Rating.new(user, movie, rating, timestamp)
-				@ratings << rating
-				if @movies[rating.movie] == nil then
-					@movies[rating.movie]=[rating]
-				else
-					@movies[rating.movie] << rating
-				end
-				if @users[rating.user] == nil then
-					@users[rating.user]=[rating]
-				else
-					@users[rating.user] << rating
+		if data.class == String then
+			File.open(data, encoding: 'iso-8859-1') do |f|
+				f.each do |line|
+					user, movie, rating, timestamp = line.chomp.split("\t")
+					# Create a Rating object and index it by movie and user
+					rating=Rating.new(user, movie, rating, timestamp)
+					@ratings << rating
 				end
 			end
+		else
+			@ratings = data
 		end
-		puts "Read #{count} ratings of #{@movies.length} movies by #{@users.length} users in #{(Time.now-start).round(3)} seconds"
+		@ratings.each do |rating|
+			if @movies[rating.movie] == nil then
+				@movies[rating.movie]=[rating]
+			else
+				@movies[rating.movie] << rating
+			end
+			if @users[rating.user] == nil then
+				@users[rating.user]=[rating]
+			else
+				@users[rating.user] << rating
+			end
+		end
+		puts "Processed #{@ratings.length} ratings of #{@movies.length} movies by #{@users.length} users in #{(Time.now-start).round(3)} seconds"
 	end
 	# To calculate popularity of a movie, sum all the reviews, subtracting 2.5 from each
 	# to penalize movies with bad reviews
